@@ -25,7 +25,7 @@ For example, if the request is sent from Chrome and has a body of:
     "productId": "12345",
     "productName": "toilet paper",
     "productCategory": "bathroom things",
-    "productDescription": "We probably don't need to tell you how to use this, check Wikipedia."
+    "productDescription": "We probably do not need to tell you how to use this, check Wikipedia."
 }
 ```
 
@@ -37,6 +37,6 @@ Then the beacon stored on disk in the file `beacon.json` will be:
 
 ## Testing
 
-You can test your program as you code using the command `PORT=8080 node index.js` and you can send a test request with a `curl` command such as `curl -v -H 'Content-Type: application/json' -d '{"productId": "12345","productName":"toilet paper","productCategory":"bathroom things","productDescription":"We probably don't need to tell you how to use this, check Wikipedia."}' http://localhost:8080`.
+You can test your program as you code using the command `PORT=8080 node index.js` and you can send a test request with a `curl` command such as `curl -v -H 'Content-Type: application/json' -d '{"productId": "12345","productName":"toilet paper","productCategory":"bathroom things","productDescription":"We probably do not need to tell you how to use this, check Wikipedia."}' http://localhost:8080/beacon`.
 
 *If you're on Windows, be sure to use Git Bash to run these commands, because they won't work in PowerShell of the normal Windows command prompt.*
