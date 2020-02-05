@@ -1,10 +1,8 @@
 const express = require('express');
-const attachMiddleware = require('./attachMiddleware');
-const handler = require('./handler');
 
 const app = express();
-attachMiddleware(app);
-app.post('/', handler);
+
+// your code here
 
 const port = +process.env['PORT'];
 

@@ -1,28 +1,42 @@
 # wisdom-coding-test
 
-Finish the Express web app by filling in the `attachMiddleware.js` and `handler.js` files. You cannot edit `index.js`. The app must accept a JSON body POST request and perform the following steps:
+## Context
 
-- Validate the request body.
-- Get the user agent string from the request (do not worry about parsing it).
-- Save the complete beacon with the request body and user agent to the disk at the current directory with the file name `beacon.json` if the request passes validation.
-- Return a 204 response with no body if the validation passes.
-- Return a 400 response with no body if the validation fails.
+You're working on an API that accepts data sent by web browsers. The data is sent from the browser using AJAX as a POST request with a JSON body. You must parse the request, validate it, and save the data if it passes validation. This data is referred to as a "beacon".
 
-The validation rules for the request body are:
+## Acceptance criteria
 
-- It has the JSON property `productName`.
-- The type of the JSON property `productName` is `string`.
-- The product name is at least 1 character.
+- The app exposes a POST endpoint at the route `/beacon`.
+- The app parses the request to get the following information for the beacon, with the following validation rules:
+  - From headers:
+    - User agent string
+  - From request body:
+    - Product id - required, string, min 1 char, max 100 chars
+    - Product name - required, string, min 1 char, max 100 chars
+    - Product category - required, string, min 1 char, max 100 chars
+    - Product description - not required, string, min 1 char, max 10000 chars
+- The app returns a 204 response with no body if validation passes, and a 400 response with no body if validation fails.
+- The app records the beacon on disk as minified JSON in a file called `beacon.json` in the current directory if validation passes.
 
-You may make the following assumptions about the request:
+For example, if the request is sent from Chrome and has a body of:
 
-- It will always be a POST request.
-- It will always have the `application/json` Content-Type.
+```json
+{
+    "productId": "12345",
+    "productName": "toilet paper",
+    "productCategory": "bathroom things",
+    "productDescription": "We probably don't need to tell you how to use this, check Wikipedia."
+}
+```
 
-For example, if the request body from a `curl` command is `{"productName":"apples"}`, then recorded on the disk at `./beacon.json` should be a file with the contents `{"productName":"apples","userAgent":"curl/7.58.0"}`.
+Then the beacon stored on disk in the file `beacon.json` will be:
 
-You may create additional files if you like to organize your code, as long as you don't edit the `index.js` file. You may use any resource online to help you, such as the Express docs (https://expressjs.com/).
+```
+{"userAgent":"Chrome 80.0.3987.87","productId": "12345","productName":"toilet paper","productCategory":"bathroom things","productDescription":"We probably don't need to tell you how to use this, check Wikipedia."}
+```
 
 ## Testing
 
-You can test your program as you code using the command `PORT=8080 node index.js` and you can send a test request with a `curl` command such as `curl -v -H 'Content-Type: application/json' -d '{"productName":"apples"}' http://localhost:8080`.
+You can test your program as you code using the command `PORT=8080 node index.js` and you can send a test request with a `curl` command such as `curl -v -H 'Content-Type: application/json' -d '{"productId": "12345","productName":"toilet paper","productCategory":"bathroom things","productDescription":"We probably don't need to tell you how to use this, check Wikipedia."}' http://localhost:8080`.
+
+*If you're on Windows, be sure to use Git Bash to run these commands, because they won't work in PowerShell of the normal Windows command prompt.*
