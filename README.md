@@ -32,7 +32,7 @@ For example, if the request is sent from Chrome and has a body of:
 Then the beacon stored on disk in the file `beacon.json` will be:
 
 ```
-{"userAgent":"Chrome 80.0.3987.87","productId": "12345","productName":"toilet paper","productCategory":"bathroom things","productDescription":"We probably don't need to tell you how to use this, check Wikipedia."}
+{"userAgent":"Chrome 80.0.3987.87","productId": "12345","productName":"toilet paper","productCategory":"bathroom things","productDescription":"We probably do not need to tell you how to use this, check Wikipedia."}
 ```
 
 ## Testing
