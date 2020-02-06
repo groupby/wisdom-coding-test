@@ -2,7 +2,7 @@
 
 ## Context
 
-You're working on an API that accepts data sent by web browsers. The data is sent from the browser using AJAX as a POST request with a JSON body. You must parse the request, validate it, and save the data if it passes validation. This data is referred to as a "beacon".
+You're working on an API that accepts analytics data sent by web browsers when shoppers perform actions like viewing a product. This data is referred to as an analytics "beacon". The beacon is sent from the browser using AJAX as a POST request with a JSON body, with some important data (like info about the web browser) automatically included in the headers of the request. You must parse the request, validate it, and save the beacon if the request passes validation.
 
 ## Acceptance criteria
 
